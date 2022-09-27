@@ -20,6 +20,7 @@ const processCaptcha = function(result : boolean){
         v-if="showCaptcha"
         @correct="processCaptcha(true)" 
         @incorrect="processCaptcha(false)" 
+        seconds="10"
       />
 
       <template v-else>

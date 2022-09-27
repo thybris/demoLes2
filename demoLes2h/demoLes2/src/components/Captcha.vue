@@ -4,7 +4,7 @@ import { onMounted, ref } from 'vue'
 const emit = defineEmits(['correct', 'incorrect']);
 const props = defineProps({
     seconds: {
-        type: Number,
+        type: [Number,String],
         required: false,
         default: 0,
     }
