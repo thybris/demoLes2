@@ -1,7 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const emit = defineEmits(['correct', 'incorrect']);
+const props = defineProps({
+    seconds: {
+        type: Number,
+        required: false,
+        default: 0,
+    }
+})
+
+const secondsLeft = ref()
 
 const captchaElements = ref([
     {
@@ -36,7 +45,17 @@ const confirm = function() {
      console.log(`IsCorrect? ${isCorrect}`);
 
      emit(isCorrect? 'correct' : 'incorrect');
+
+    
 };
+
+onMounted(() => {
+        console.log("On Mounted ...")
+
+        setInterval(() => {
+
+        }, 1000);
+     })
 
 
 
