@@ -10,7 +10,7 @@ const props = defineProps({
     }
 })
 
-const secondsLeft = ref()
+const secondsLeft = ref(props.seconds);
 
 const captchaElements = ref([
     {
@@ -52,9 +52,16 @@ const confirm = function() {
 onMounted(() => {
         console.log("On Mounted ...")
 
-        setInterval(() => {
+            if (props.seconds > 0){
+                const timer = setInterval(() => {
+                    secondsLeft.value--;
+                    if(secondsLeft.value <=0) {
+                        clearInterval(timer);
+                        confirm();
+                    }
 
-        }, 1000);
+                }, 1000);
+            }
      })
 
 
@@ -63,6 +70,7 @@ onMounted(() => {
 
 <template>
     <div>
+        <p v-if="props.seconds > 0"> You have {{secondsLeft}} left to decide</p>
         <img class="image" 
                 v-for="(item, i) in captchaElements" 
                             :src="item.image" 
