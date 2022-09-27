@@ -10,7 +10,7 @@ const props = defineProps({
     }
 })
 
-const secondsLeft = ref(props.seconds);
+const secondsLeft = ref(props.seconds as number);
 
 const captchaElements = ref([
     {
