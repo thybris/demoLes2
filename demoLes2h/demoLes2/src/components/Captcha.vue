@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
+
+const emit = defineEmits(['correct', 'incorrect']);
 
 const captchaElements = ref([
     {
@@ -32,7 +34,11 @@ const confirm = function() {
     )
 
      console.log(`IsCorrect? ${isCorrect}`);
-}
+
+     emit(isCorrect? 'correct' : 'incorrect');
+};
+
+
 
 </script>
 
